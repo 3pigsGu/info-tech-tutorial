@@ -2,9 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/12/13/hello-world/</loc>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/2019/12/18/introduction-of-machine-learning/</loc>
     
-    <lastmod>2019-12-13T04:03:19.694Z</lastmod>
+    <lastmod>2019-12-18T06:16:33.169Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/categories/index.html</loc>
+    
+    <lastmod>2019-12-18T06:04:12.808Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/repository/index.html</loc>
+    
+    <lastmod>2019-12-18T06:02:55.290Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/2019/12/17/hello-world/</loc>
+    
+    <lastmod>2019-12-18T05:45:35.257Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/tags/index.html</loc>
+    
+    <lastmod>2019-12-18T05:12:16.375Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/links/index.html</loc>
+    
+    <lastmod>2019-12-18T05:11:58.126Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/books/index.html</loc>
+    
+    <lastmod>2019-12-18T05:11:36.322Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/about/index.html</loc>
+    
+    <lastmod>2019-12-18T05:11:21.620Z</lastmod>
     
   </url>
   
