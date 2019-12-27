@@ -304,7 +304,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.2k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.1k(字)</span>
 	
 	
 
@@ -335,7 +335,7 @@
 <p>更多参考：<a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-conda.html" target="_blank" rel="noopener">Conda Management</a></p>
 </li>
 </ul>
-<h3 id="1-2-Condad的环境管理"><a href="#1-2-Condad的环境管理" class="headerlink" title="1.2. Condad的环境管理"></a>1.2. Condad的环境管理</h3><ul>
+<h3 id="1-2-Conda的环境管理"><a href="#1-2-Conda的环境管理" class="headerlink" title="1.2. Conda的环境管理"></a>1.2. Conda的环境管理</h3><ul>
 <li><p>命令行创建一个新环境</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\44355&gt; conda create --name tensorflow-env</span><br></pre></td></tr></table></figure>
 </li>
@@ -365,11 +365,36 @@
 <li>安装完成后验证Tensorflow是否安装成功：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow-env) C:\Users\44355&gt; python</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf  <span class="comment">#不报错即安装成功</span></span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exit</span>()</span><br><span class="line">(tensorflow-env) C:\Users\44355&gt; conda deactivate</span><br></pre></td></tr></table></figure>
 更多参考：<a href="https://tensorflow.google.cn/install" target="_blank" rel="noopener">Tensorflow官方安装</a></li>
 </ul>
-<h2 id="3-在tensorflow-env环境下安装常用的第三方软件"><a href="#3-在tensorflow-env环境下安装常用的第三方软件" class="headerlink" title="3. 在tensorflow-env环境下安装常用的第三方软件"></a>3. 在tensorflow-env环境下安装常用的第三方软件</h2><h3 id="3-1-安装Jupyter"><a href="#3-1-安装Jupyter" class="headerlink" title="3.1. 安装Jupyter"></a>3.1. 安装Jupyter</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow-env) C:\Users\44355&gt; pip install jupyterlab</span><br></pre></td></tr></table></figure>
+<h2 id="3-在tensorflow-env环境下安装常用的第三方软件"><a href="#3-在tensorflow-env环境下安装常用的第三方软件" class="headerlink" title="3. 在tensorflow-env环境下安装常用的第三方软件"></a>3. 在tensorflow-env环境下安装常用的第三方软件</h2><h3 id="3-1-安装Jupyter"><a href="#3-1-安装Jupyter" class="headerlink" title="3.1. 安装Jupyter"></a>3.1. 安装Jupyter</h3><ul>
+<li><p>Jupyter是一款为了开发跨多种编程语言的交互式计算的开源软件，它提供开放的标准和服务。<br>JupyterLab是用于Jupyter笔记本，代码和数据的基于Web的交互式开发环境。 JupyterLab非常灵活：配置和安排用户界面以支持数据科学，科学计算和机器学习中的各种工作流程。 JupyterLab是可扩展的和模块化的：编写可添加新组件并与现有组件集成的插件。接下来我们通过pip命令来安装JupyterLab。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow-env) C:\Users\44355&gt; pip install jupyterlab</span><br></pre></td></tr></table></figure>
 <p>更多参考：<a href="https://jupyter.org/install" target="_blank" rel="noopener">Jupyter官方安装</a></p>
-<h3 id="3-2-安装matplotlib"><a href="#3-2-安装matplotlib" class="headerlink" title="3.2. 安装matplotlib"></a>3.2. 安装matplotlib</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow-env) C:\Users\44355&gt; python -m pip install -U pip</span><br><span class="line">(tensorflow-env) C:\Users\44355&gt; python -m pip install -U matplotlib</span><br></pre></td></tr></table></figure>
-<p>更多参考：<a href="https://matplotlib.org/users/installing.html" target="_blank" rel="noopener">matplotlib官方安装</a></p>
-<h2 id="4-示例代码演示TensorFlow-Jupyter-Notebook-and-matplotlib的使用"><a href="#4-示例代码演示TensorFlow-Jupyter-Notebook-and-matplotlib的使用" class="headerlink" title="4. 示例代码演示TensorFlow, Jupyter Notebook, and matplotlib的使用"></a>4. 示例代码演示TensorFlow, Jupyter Notebook, and matplotlib的使用</h2>
+</li>
+<li><p>Jupyter Notebook是Jupyter中的一个开源Web应用程序，允许您创建和共享包含实时代码，方程式，可视化效果和叙述文本的文档。用途包括：数据清理和转换，数值模拟，统计建模，数据可视化，机器学习等。我们可以通过命令来启动Jupyter Notebook服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow-env) C:\Users\44355&gt; jupyter notebook</span><br></pre></td></tr></table></figure>
+<p>终端上会打印如下启动信息：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[I 10:20:26.155 NotebookApp] Serving notebooks from local directory: C:\Users\44355</span><br><span class="line">[I 10:20:26.160 NotebookApp] The Jupyter Notebook is running at:</span><br><span class="line">[I 10:20:26.161 NotebookApp] http://localhost:8888/?token=00f06b6e31b020740277e2d20eef416da634cc55d6f6a2ba</span><br><span class="line">[I 10:20:26.162 NotebookApp]  or http://127.0.0.1:8888/?token=00f06b6e31b020740277e2d20eef416da634cc55d6f6a2ba</span><br><span class="line">[I 10:20:26.162 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).</span><br><span class="line">[C 10:20:26.406 NotebookApp]</span><br><span class="line"></span><br><span class="line">    To access the notebook, open this file in a browser:</span><br><span class="line">        file:///C:/Users/44355/AppData/Roaming/jupyter/runtime/nbserver-138920-open.html</span><br><span class="line">    Or copy and paste one of these URLs:</span><br><span class="line">        http://localhost:8888/?token=00f06b6e31b020740277e2d20eef416da634cc55d6f6a2ba</span><br><span class="line">     or http://127.0.0.1:8888/?token=00f06b6e31b020740277e2d20eef416da634cc55d6f6a2ba</span><br></pre></td></tr></table></figure>
+<p>接下来会自动打开浏览器进入Jupyter Notebook操作界面：</p>
+<img src="/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/Jupyter_Notebook_Interface.png" class="" title="Jupyter Notebook操作界面">
+<p>更多参考：<a href="https://jupyter.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">Jupyter官方文档</a></p>
+</li>
+</ul>
+<h3 id="3-2-安装Matplotlib"><a href="#3-2-安装Matplotlib" class="headerlink" title="3.2. 安装Matplotlib"></a>3.2. 安装Matplotlib</h3><p>Matplotlib是一个Python 2D绘图库，它以多种硬拷贝格式和跨平台的交互式环境生成出版物质量的图形。 Matplotlib可用于Python脚本，Python和IPython Shell，Jupyter Notebook，Web应用程序服务器和四个图形用户界面工具包。<br>接下来我们通过Python来安装Matplotlib插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow-env) C:\Users\44355&gt; python -m pip install -U pip</span><br><span class="line">(tensorflow-env) C:\Users\44355&gt; python -m pip install -U matplotlib</span><br></pre></td></tr></table></figure>
+<p>更多参考：<a href="https://matplotlib.org/users/installing.html" target="_blank" rel="noopener">Matplotlib官方安装</a><br>现在我们只需几行代码就可以生成图表，直方图，功率谱，条形图，误差图，散点图等。</p>
+<h2 id="4-示例代码演示TensorFlow-Jupyter-Notebook-and-Matplotlib的使用"><a href="#4-示例代码演示TensorFlow-Jupyter-Notebook-and-Matplotlib的使用" class="headerlink" title="4. 示例代码演示TensorFlow, Jupyter Notebook, and Matplotlib的使用"></a>4. 示例代码演示TensorFlow, Jupyter Notebook, and Matplotlib的使用</h2><p>接下来，我们在Jupyter Notebook界面中写一段很简单的演示代码。<br>首先我们在Jupyter Notebook操作界面的右上角单击<font style=" border:1px solid; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; background-color: #F8F8F8;"> new </font>按钮，然后选择Python版本，这边选择的是安装Conda时自带的Python3.</p>
+<img src="/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/Jupyter_Edit_1.png" class="">
+<p>进入代码操作界面后，可以把默认代码文件名Untitled修改成自己定义的名字，这里修改成“My First Notebook”。</p>
+<img src="/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/Jupyter_Edit_2.png" class="">
+<p>然后我们在代码块区域输入如下示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">a = tf.random_normal([<span class="number">2</span>,<span class="number">20</span>])</span><br><span class="line">sess = tf.Session()</span><br><span class="line">out = sess.run(a)</span><br><span class="line">x, y = out</span><br><span class="line">plt.scatter(x, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>代码中tf.random_normal()函数用于从服从指定正太分布的数值中取出指定个数的值。 shape=[2,20]是输出张量的形状，一个2行20列的矩阵。然后tensorflow运行计算后的输出按行分别传给x和y两个变量。最后以Matplotlib的scatter散点图的方式图形化展示，其中x代表横轴值，y代表纵轴值。<br>代码可以分成多个代码块，代码块可以通过左上角<font style=" border:1px solid; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; background-color: #F8F8F8;"> + </font>号增加，最终完成界面如下：</p>
+<img src="/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/Jupyter_Edit_3.png" class="">
+<p>完成Python示例代码后，可以点击<font style=" border:1px solid; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; background-color: #F8F8F8;"> Run </font>按钮逐步执行代码块，这里代码调用tensorflow正太分布算法，最终结果会使用Matplotlib去直观的展示20个点的随机正太分布情况。</p>
+<img src="/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/Jupyter_Edit_4.png" class="">
+
+<h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>至此整个Tensorflow的安装详解和示例代码演示到此结束，如果需要了解更多的相关细节，请阅读本文中提供的更多的官方链接。如有疑问欢迎大家留言！欢迎来踩留印！</p>
+
       
     </div>
     <div class="article-footer">
