@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/2019/12/28/flink-tutorial-01/</loc>
+    
+    <lastmod>2019-12-29T16:16:35.372Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/</loc>
+    
+    <lastmod>2019-12-28T14:23:00.191Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://3pigsgu.github.io/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/</loc>
     
-    <lastmod>2019-12-27T04:33:31.479Z</lastmod>
+    <lastmod>2019-12-28T13:55:48.111Z</lastmod>
     
   </url>
   
