@@ -17,24 +17,32 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Apache Flink实战全集 | Infomatic Technique Tutorial</title>
-  <meta name="description" content="1. Apache Flink简介1.1. Flink的用途像Apache Hadoop和Apache Spark一样，Apache Flink是一个社区驱动的开源框架，用于分布式大数据分析。 Flink用Java编写，具有适用于Scala，Java和Python的API，可进行批处理和实时流分析。 1.2. 必备环境• 类似于UNIX的环境，例如Linux，Mac OS X或Cygwin(实际上">
+  <title>Prometheus+Grafana监控平台搭建与配置 | Infomatic Technique Tutorial</title>
+  <meta name="description" content="1. Prometheus简介Prometheus是最初在SoundCloud上构建的开源系统监视和警报工具包。自2012年成立以来，许多公司和组织都采用了Prometheus，该项目拥有非常活跃的开发人员和用户社区。现在，它是一个独立的开源项目，并且独立于任何公司进行维护。为了强调这一点并阐明项目的治理结构，Prometheus于2016年加入了Cloud Native Computing Fo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Apache Flink实战全集">
-<meta property="og:url" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2019&#x2F;12&#x2F;28&#x2F;flink&#x2F;flink-tutorial-00&#x2F;index.html">
+<meta property="og:title" content="Prometheus+Grafana监控平台搭建与配置">
+<meta property="og:url" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;index.html">
 <meta property="og:site_name" content="Infomatic Technique Tutorial">
-<meta property="og:description" content="1. Apache Flink简介1.1. Flink的用途像Apache Hadoop和Apache Spark一样，Apache Flink是一个社区驱动的开源框架，用于分布式大数据分析。 Flink用Java编写，具有适用于Scala，Java和Python的API，可进行批处理和实时流分析。 1.2. 必备环境• 类似于UNIX的环境，例如Linux，Mac OS X或Cygwin(实际上">
+<meta property="og:description" content="1. Prometheus简介Prometheus是最初在SoundCloud上构建的开源系统监视和警报工具包。自2012年成立以来，许多公司和组织都采用了Prometheus，该项目拥有非常活跃的开发人员和用户社区。现在，它是一个独立的开源项目，并且独立于任何公司进行维护。为了强调这一点并阐明项目的治理结构，Prometheus于2016年加入了Cloud Native Computing Fo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2019&#x2F;12&#x2F;28&#x2F;flink&#x2F;flink-tutorial-00&#x2F;flinkstack.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2019&#x2F;12&#x2F;28&#x2F;flink&#x2F;flink-tutorial-00&#x2F;building-blocks.png">
-<meta property="article:published_time" content="2019-12-28T05:21:46.000Z">
-<meta property="article:modified_time" content="2020-01-03T05:29:51.948Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;prometheus_architecture.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;prometheus_web.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;prometheus_targets.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;grafana_dashboard.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;grafana_datasource.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;grafana_dashboard_node.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;grafana_dashboard_mysql.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;grafana_import.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;grafana_server_interface.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;grafana_mysql_interface.png">
+<meta property="article:published_time" content="2020-01-07T07:19:02.000Z">
+<meta property="article:modified_time" content="2020-01-07T15:35:28.831Z">
 <meta property="article:author" content="Jack Gu">
-<meta property="article:tag" content="框架实战">
+<meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2019&#x2F;12&#x2F;28&#x2F;flink&#x2F;flink-tutorial-00&#x2F;flinkstack.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;07&#x2F;other&#x2F;prometheus_grafana_monitoring&#x2F;prometheus_architecture.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://3pigsgu.github.io/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/index.html">
+  <link rel="canonical" href="https://3pigsgu.github.io/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Infomatic Technique Tutorial" type="application/atom+xml">
   
@@ -329,14 +337,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-flink/flink-tutorial-00" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-other/prometheus_grafana_monitoring" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Apache Flink实战全集
+      Prometheus+Grafana监控平台搭建与配置
     </h1>
   
 
@@ -344,29 +352,29 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/" class="article-date">
-	  <time datetime="2019-12-28T05:21:46.000Z" itemprop="datePublished">2019-12-28</time>
+	<a href="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/" class="article-date">
+	  <time datetime="2020-01-07T07:19:02.000Z" itemprop="datePublished">2020-01-07</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/info-tech-tutorial/categories/Flink-Action/">Flink实战</a>
+    <a class="article-category-link" href="/info-tech-tutorial/categories/Other/">其他</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/info-tech-tutorial/tags/Architecture-Action/" rel="tag">框架实战</a>
+	<a class="article-tag-link" href="/info-tech-tutorial/tags/Other/" rel="tag">其他</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 558(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.4k(字)</span>
 	
 	
 
@@ -374,35 +382,59 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="1-Apache-Flink简介"><a href="#1-Apache-Flink简介" class="headerlink" title="1. Apache Flink简介"></a>1. Apache Flink简介</h2><h3 id="1-1-Flink的用途"><a href="#1-1-Flink的用途" class="headerlink" title="1.1. Flink的用途"></a>1.1. Flink的用途</h3><p>像Apache Hadoop和Apache Spark一样，Apache Flink是一个社区驱动的开源框架，用于分布式大数据分析。 Flink用Java编写，具有适用于Scala，Java和Python的API，可进行批处理和实时流分析。</p>
-<h3 id="1-2-必备环境"><a href="#1-2-必备环境" class="headerlink" title="1.2. 必备环境"></a>1.2. 必备环境</h3><p>• 类似于UNIX的环境，例如Linux，Mac OS X或Cygwin(实际上也支持Windows环境)；<br>• Java 6.X或更高版本；<br>• [可选] Maven 3.0.4或更高版本。</p>
-<h3 id="1-3-体系结构和技术栈"><a href="#1-3-体系结构和技术栈" class="headerlink" title="1.3. 体系结构和技术栈"></a>1.3. 体系结构和技术栈</h3><img src="/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/flinkstack.jpg" class="" title="Apache Flink Stack">
+        <h2 id="1-Prometheus简介"><a href="#1-Prometheus简介" class="headerlink" title="1. Prometheus简介"></a>1. Prometheus简介</h2><p>Prometheus是最初在SoundCloud上构建的开源系统监视和警报工具包。自2012年成立以来，许多公司和组织都采用了Prometheus，该项目拥有非常活跃的开发人员和用户社区。现在，它是一个独立的开源项目，并且独立于任何公司进行维护。为了强调这一点并阐明项目的治理结构，Prometheus于2016年加入了Cloud Native Computing Foundation，这是继Kubernetes之后的第二个托管项目。 </p>
+<h3 id="1-1-Prometheus特征"><a href="#1-1-Prometheus特征" class="headerlink" title="1.1. Prometheus特征"></a>1.1. Prometheus特征</h3><p>普罗米修斯的主要特点是： </p>
+<ul>
+<li>一个多维数据模型，其中包含通过度量标准名称和键/值对标识的时间序列数据；</li>
+<li>具备PromQL查询语言，是一种灵活的可利用维度的查询语言；</li>
+<li>不依赖分布式存储；单服务器节点自治；</li>
+<li>通过HTTP上的拉取模型数据进行时间序列收集；</li>
+<li>通过中间网关支持推送时间序列；</li>
+<li>通过服务发现或静态配置发现目标；</li>
+<li>多种图形和仪表板支持模式。</li>
+</ul>
+<h3 id="1-2-Prometheus组件构成"><a href="#1-2-Prometheus组件构成" class="headerlink" title="1.2. Prometheus组件构成"></a>1.2. Prometheus组件构成</h3><p>普罗米修斯的生态系统是由各种不同的组件构成，其中组件都是可选的：</p>
+<ul>
+<li>Prometheus Server主服务器，它会抓取并存储时间序列数据；</li>
+<li>Client Library客户端库提供了可检索的应用代码；</li>
+<li>Push gateway推送网关支持短生命周期的Job工作任务；</li>
+<li>特定的Exporters提供了多种HAProxy， StatsD，Graphite等定制服务；</li>
+<li>Alertmanager提供了告警的控制；</li>
+<li>并兼容多种辅助工具。</li>
+</ul>
+<h3 id="1-3-Prometheus体系架构"><a href="#1-3-Prometheus体系架构" class="headerlink" title="1.3. Prometheus体系架构"></a>1.3. Prometheus体系架构</h3><p>下图说明了Prometheus的体系结构及其某些生态系统组件：</p>
+<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/prometheus_architecture.png" class="">
+<p>Prometheus直接或通过中间推送网关从已检测作业中删除指标，以用于短期作业。它在本地存储所有报废的样本，并对这些数据运行规则，以汇总和记录现有数据中的新时间序列，或生成警报。 Grafana或其他API使用者可用于可视化收集的数据。</p>
+<h2 id="2-安装配置Prometheus"><a href="#2-安装配置Prometheus" class="headerlink" title="2. 安装配置Prometheus"></a>2. 安装配置Prometheus</h2><p>下面介绍如何安装Prometheus，并且利用两个exporter去监控Linux server和Mysql数据库。这里需要用到node_exporter和mysqld_exporter两个收集器。</p>
+<ul>
+<li>首先我们下载Prometheus Server，并使用prometheus.yml配置文件启动服务:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;github.com&#x2F;prometheus&#x2F;prometheus&#x2F;releases&#x2F;download&#x2F;v2.15.2&#x2F;prometheus-2.15.2.linux-amd64.tar.gz</span><br><span class="line">$ tar zxvf prometheus-2.15.2.linux-amd64.tar.gz</span><br><span class="line">$ cd prometheus-2.15.2.linux-amd64</span><br><span class="line">$ .&#x2F;prometheus --config.file&#x3D;prometheus.yml</span><br></pre></td></tr></table></figure>
+Prometheus本身提供web界面。当Prometheus Server启动起来后，可通过浏览器访问地址<a href="http://localhost:9090/graph" target="_blank" rel="noopener">http://localhost:9090/graph</a> 来进入Prometheus web界面。<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/prometheus_web.png" class=""></li>
+<li>接着下载并安装node_exporter收集器来收集Linux Server性能数据：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;github.com&#x2F;prometheus&#x2F;node_exporter&#x2F;releases&#x2F;download&#x2F;v0.18.1&#x2F;node_exporter-0.18.1.linux-amd64.tar.gz</span><br><span class="line">$ tar zxvf node_exporter-0.18.1.linux-amd64.tar.gz</span><br><span class="line">$ cd node_exporter-0.18.1.linux-amd64</span><br><span class="line">$ .&#x2F;node_exporter</span><br></pre></td></tr></table></figure></li>
+<li>最后下载并安装mysqld_exporter收集器来收集Mysql性能数据，在安装收集器之前需要先在数据库新建用户以提供mysqld_exporter收集器所需的Mysql权限：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT REPLICATION CLIENT,PROCESS ON *.* TO &#39;mysql_monitor&#39;@&#39;localhost&#39; identified by &#39;mysql_monitor&#39;;</span><br><span class="line">GRANT SELECT ON *.* TO &#39;mysql_monitor&#39;@&#39;localhost&#39;;</span><br></pre></td></tr></table></figure>
+安装mysqld_exporter收集器，并在mysqld_exporter-0.12.1.linux-amd64解压缩后的目录下新增一个名为.my.cnf文件：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;github.com&#x2F;prometheus&#x2F;mysqld_exporter&#x2F;releases&#x2F;download&#x2F;v0.12.1&#x2F;mysqld_exporter-0.12.1.linux-amd64.tar.gz</span><br><span class="line">$ tar zxvf mysqld_exporter-0.12.1.linux-amd64.tar.gz</span><br><span class="line">$ cd mysqld_exporter-0.12.1.linux-amd64</span><br><span class="line"></span><br><span class="line">$ cat &#x2F;usr&#x2F;local&#x2F;mysqld_exporter-0.10.0.linux-amd64&#x2F;.my.cnf</span><br><span class="line">[client]</span><br><span class="line">user&#x3D;mysql_monitor</span><br><span class="line">password&#x3D;mysql_monitor</span><br><span class="line"></span><br><span class="line">.&#x2F;mysqld_exporter --config.my-cnf&#x3D;&quot;.my.cnf&quot;</span><br></pre></td></tr></table></figure></li>
+<li>最后为了能在Prometheus Server服务器端能够接收node_exporter和mysqld_exporter采集到的数据，需要在prometheus.yml中新增如下配置：<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="comment"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">'prometheus'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># metrics_path defaults to '/metrics'</span></span><br><span class="line">    <span class="comment"># scheme defaults to 'http'.</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">targets:</span> <span class="string">['localhost:9090']</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">'server'</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">targets:</span> <span class="string">['localhost:9100']</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">'mysql'</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">targets:</span> <span class="string">['localhost:9104']</span></span><br></pre></td></tr></table></figure>
+重启Prometheus Server应用后，在Prometheus Web界面中的Status-&gt;Targets页面，可以看到Mysql和L两个Target的状态已经变成UP了：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/prometheus_targets.png" class="">
+更多参考：<a href="https://ryanyang.gitbook.io/prometheus/" target="_blank" rel="noopener">Prometheus中文文档</a></li>
+</ul>
+<h2 id="3-Grafana安装配置"><a href="#3-Grafana安装配置" class="headerlink" title="3. Grafana安装配置"></a>3. Grafana安装配置</h2><p>Grafana是一款开源的应用分析和监控解决方案。由于Prometheus Web的界面过于简单，为了能够更绚丽的展示Prometheus监控的应用数据，这里选用Grafana实现监控数据的动态可视化组合Dashboard。</p>
+<ul>
+<li>首先先下载并运行Grafana：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;dl.grafana.com&#x2F;oss&#x2F;release&#x2F;grafana-6.5.2.linux-amd64.tar.gz </span><br><span class="line">$ tar -zxvf grafana-6.5.2.linux-amd64.tar.gz</span><br><span class="line">$ cd grafana-6.5.2.linux-amd64</span><br><span class="line">$ .&#x2F;bin&#x2F;grafana-server web</span><br></pre></td></tr></table></figure>
+Grafana启动后，我们可通过<a href="http://monitor_host:3000" target="_blank" rel="noopener">http://monitor_host:3000</a> 访问Grafana网页界面（默认登陆帐号/密码为admin/admin）：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/grafana_dashboard.png" class=""></li>
+<li>接着，新建一个Data Source以从Prometheus接收数据：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/grafana_datasource.png" class=""></li>
+<li>然后新建两个Dashboard面板来动态展示Linux和Mysql的监控情况，这里我们可以从Grafana Lab上下载相关应用的Dashboard面板现成样式。<br>Server Dashboard模板：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/grafana_dashboard_node.png" class="" title="Server Dashboard Style">
+Mysql Dashboard模板：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/grafana_dashboard_mysql.png" class="" title="Mysql Dashboard Style">
+这里我们只要复制对应的Dashboard的编号，比如上图中Server Dashboard编号是11074和Mysql Dashboard编号是6239。</li>
+<li>接下来，在Grafana的Import界面粘贴对应的编号，然后生成Unique identifier (uid)和配置Prometheus Data Source：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/grafana_import.png" class=""></li>
+<li>最后，生成的Dashboard界面如下：<br>Server Dashboard界面：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/grafana_server_interface.png" class="">
+Mysql Dashboard界面：<img src="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/grafana_mysql_interface.png" class="">
 
-<h4 id="1-3-1-Flink应用执行环境"><a href="#1-3-1-Flink应用执行环境" class="headerlink" title="1.3.1. Flink应用执行环境"></a>1.3.1. Flink应用执行环境</h4><p>Apache Flink是一个数据处理系统，是Hadoop MapReduce组件的替代产品。它带有自己的运行时，而不是在MapReduce之上构建。因此，它可以完全独立于Hadoop生态系统工作。<br>ExecutionEnvironment是执行程序的上下文。您可以根据需要使用不同的环境。</p>
-<ul>
-<li>JVM环境：Flink可以在单个Java虚拟机上运行，​​从而允许用户直接从其IDE测试和调试Flink程序。使用此环境时，您需要的只是正确的Maven依赖项。</li>
-<li>本地环境：为了能够在正在运行的Flink实例上运行程序（而不是从IDE内部），您需要在计算机上安装Flink。</li>
-<li>集群环境：以standalone集群或yarn集群的完全分布式方式运行Flink。</li>
+</li>
 </ul>
-<h4 id="1-3-2-Flink-API接口"><a href="#1-3-2-Flink-API接口" class="headerlink" title="1.3.2. Flink API接口"></a>1.3.2. Flink API接口</h4><p>Flink可用于流或批处理。它们提供了三个API：</p>
-<ul>
-<li>DataStream API：流处理，即对无限制数据流的转换（过滤器，时间窗口，聚合）。 </li>
-<li>DataSet API：批处理，即数据集的转换。</li>
-<li>Table API：类似于SQL的表达语言（例如Spark中的数据框），可以嵌入批处理和流应用程序中。</li>
-</ul>
-<h4 id="1-3-3-构建层次"><a href="#1-3-3-构建层次" class="headerlink" title="1.3.3. 构建层次"></a>1.3.3. 构建层次</h4><p>在最基础的层级上，Flink由Sources，Transformations和Sinks组成。</p>
-<img src="/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/building-blocks.png" class="" title="building blocks">
-<ul>
-<li>Data Source：Flink处理的传入数据；</li>
-<li>Transformations：Flink修改传入数据时的处理步骤；</li>
-<li>Data Sink：Flink处理后在哪里发送数据。</li>
-</ul>
-<p>Sources和Sinks可以是本地/HDFS文件，数据库，消息队列等。已经有许多第三方连接器可用，或者您可以轻松创建自己的连接器。</p>
-<h2 id="2-Flink实战章节"><a href="#2-Flink实战章节" class="headerlink" title="2. Flink实战章节"></a>2. Flink实战章节</h2><p>第一篇： <a href="/info-tech-tutorial/2019/12/28/flink-tutorial-01/" title="Apache Flink快速入门">Apache Flink快速入门</a><br>第二篇： <a href="/info-tech-tutorial/2019/12/30/flink-tutorial-02/" title="Apache Flink三类API接口">Apache Flink三类API接口</a></p>
-<h2 id="Reference-List"><a href="#Reference-List" class="headerlink" title="Reference List"></a>Reference List</h2><ol>
-<li><a href="https://blog.imaginea.com/apache-flink/" target="_blank" rel="noopener">Apache Flink</a>;</li>
-<li><a href="https://ci.apache.org/projects/flink/flink-docs-stable/" target="_blank" rel="noopener">Apache Flink Documentation</a>;</li>
-<li><a href="https://riptutorial.com/apacheflink/topic/5798/getting-started-with-apache-flink" target="_blank" rel="noopener">Getting Started with Apache-Flink</a>.</li>
+<h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>至此，整个Prometheus+Grafana监控平台搭建与配置完成。如有疑问欢迎留言！</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">Prometheus DOCS</a>;</li>
+<li><a href="https://blog.csdn.net/qq_36357820/article/details/80777167" target="_blank" rel="noopener">prometheus+grafana监控设置</a>;</li>
+<li><a href="https://www.jianshu.com/p/8d2c020313f0" target="_blank" rel="noopener">Prometheus+Grafana监控系统搭建</a>.</li>
 </ol>
 
       
@@ -413,7 +445,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://3pigsgu.github.io/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/" title="Apache Flink实战全集" target="_blank" rel="external">https://3pigsgu.github.io/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/</a>
+      <a href="https://3pigsgu.github.io/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/" title="Prometheus+Grafana监控平台搭建与配置" target="_blank" rel="external">https://3pigsgu.github.io/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -459,13 +491,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/info-tech-tutorial/2019/12/30/flink-tutorial-02/" title="Apache Flink三类API接口"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/info-tech-tutorial/2019/12/28/flink-tutorial-01/" title="Apache Flink快速入门"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/info-tech-tutorial/2019/12/30/flink-tutorial-02/" title="Apache Flink三类API接口"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
