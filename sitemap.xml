@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark-tutorial-01/</loc>
+    
+    <lastmod>2020-01-21T07:44:20.234Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/</loc>
+    
+    <lastmod>2020-01-14T09:22:42.960Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://3pigsgu.github.io/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/</loc>
     
     <lastmod>2020-01-07T15:35:28.831Z</lastmod>

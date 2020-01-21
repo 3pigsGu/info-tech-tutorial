@@ -6,7 +6,7 @@
   <link href="/info-tech-tutorial/atom.xml" rel="self"/>
   
   <link href="https://3pigsgu.github.io/info-tech-tutorial/"/>
-  <updated>2020-01-07T15:35:28.831Z</updated>
+  <updated>2020-01-21T07:44:20.234Z</updated>
   <id>https://3pigsgu.github.io/info-tech-tutorial/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Apache Spark Standalone集群模式部署</title>
+    <link href="https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark-tutorial-01/"/>
+    <id>https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark-tutorial-01/</id>
+    <published>2020-01-14T09:20:19.000Z</published>
+    <updated>2020-01-21T07:44:20.234Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><p>为了部署Apache Spark Standalone集群模式，本次准备了三台Linux虚拟机来实现集群：一台Master和两台Slaves。<br>Master: 192.168.71.130<br>Slave: 192.168.71.131<br>Slave: 192.168.71.132<br>为了保证三台虚拟机之间能正常访问通讯，需要在每台虚拟机上配置/etc目录下的hosts和hostname文件。<br>所有的hosts文件设置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoop0 192.168.71.130</span><br><span class="line">hadoop1 192.168.71.131</span><br><span class="line">hadoop2 192.168.71.132</span><br></pre></td></tr></table></figure><p>各自对应IP的虚拟机上的hostname设置成上面相对应的IP地址前面的别名，例如IP为192.168.71.130的虚拟机的hostname设置成hadoop0。然后，通过ping命令测试各节点之间是否互通。<br>如果各节点之间有使用密钥验证登录，那么需要额外的生成密钥并添加到各节点认证文件中，以实现各节点的免密登录。<br>生成密钥：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure><p>一路默认回车，这样在当前用户的主目录下会生成.ssh文件夹。进入这个文件夹，首先把本机的公钥加入认证文件:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure><h2 id="2-下载Spark"><a href="#2-下载Spark" class="headerlink" title="2. 下载Spark"></a>2. 下载Spark</h2><p>接下来，我们去Apache Spark官网下载相对应的Spark Pack。这里我们选择2.4.4 release版本并预编译包含Hadoop2.7的lib库的Spark。(<a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener">Spark下载地址</a>)</p><img src="/info-tech-tutorial/2020/01/14/spark-tutorial-01/spark-download.png" class=""><p>这里我们选择包含hadoop的lib库的Spark是为了免去配置Spark所需的hadoop依赖库的繁琐过程，具体的不带hadoop lib库的Spark的手动配置过程，会在Spark与Hadoop的整合应用这一章再展开。<br>然后点击下载链接，进入跳转页面后，任意选择一个下载链接。接着在预先准备的Linux虚拟机上下载Spark Package, 例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;apache&#x2F;spark&#x2F;spark-2.4.4&#x2F;spark-2.4.4-bin-hadoop2.7.tgz</span><br><span class="line">tar zxvf spark-2.4.4-bin-hadoop2.7.tgz</span><br></pre></td></tr></table></figure><p>在/etc/profile中添加SPARK_HOME路径：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;profile</span><br><span class="line">export SPARK_HOME&#x3D;&#x2F;home&#x2F;guty&#x2F;software&#x2F;spark-2.4.4-bin-hadoop2.7</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;home&#x2F;guty&#x2F;software&#x2F;jdk1.8.0_221</span><br><span class="line">export PATH&#x3D;.:$JAVA_HOME&#x2F;bin:$SPARK_HOME&#x2F;bin:$PATH</span><br><span class="line"></span><br><span class="line">source &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure><h2 id="3-配置Spark-Master"><a href="#3-配置Spark-Master" class="headerlink" title="3. 配置Spark Master"></a>3. 配置Spark Master</h2><p>在准备好Spark Package之后，我们上Master节点（192.168.71.130），进行相应的配置。<br>首先我们进入Spark目录spark-2.4.4-bin-hadoop2.7，然后配置conf/spark-env.sh,在文件末尾添加JAVA_HOME路径。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi conf&#x2F;spark_env.sh</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;home&#x2F;guty&#x2F;software&#x2F;jdk1.8.0_221</span><br></pre></td></tr></table></figure><p>接着配置conf/slaves,在文件末尾添加集群各台主机的hostname：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi conf&#x2F;slaves</span><br><span class="line">hadoop0</span><br><span class="line">hadoop1</span><br><span class="line">hadoop2</span><br></pre></td></tr></table></figure><h2 id="4-配置Spark-Workers-Slaves"><a href="#4-配置Spark-Workers-Slaves" class="headerlink" title="4. 配置Spark Workers (Slaves)"></a>4. 配置Spark Workers (Slaves)</h2><p>当Spark Master配置完成后，配置各个Spark Workers相对比较简单。这里使用linux的scp命令直接在各主机节点的局域网内床送复制SparK Pack程序文件。<br>例如在节点192.168.71.131和192.168.71.132上执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp root@192.168.71.130:&#x2F;home&#x2F;guty&#x2F;software&#x2F;spark-2.4.4-bin-hadoop2.7  &#x2F;home&#x2F;guty&#x2F;software</span><br></pre></td></tr></table></figure><p>同样，在节点192.168.71.131和192.168.71.132上/etc/profile文件中添加SPARK_HOME路径。</p><h2 id="5-启动和停止Spark"><a href="#5-启动和停止Spark" class="headerlink" title="5. 启动和停止Spark"></a>5. 启动和停止Spark</h2><ul><li><p>启动Spark<br>启动后会显示如下信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;sbin&#x2F;start-all.sh</span><br><span class="line"></span><br><span class="line">starting org.apache.spark.deploy.master.Master, logging to &#x2F;home&#x2F;guty&#x2F;software&#x2F;spark-2.4.4-bin-hadoop2.7&#x2F;logs&#x2F;spark-root-org.apache.spark.deploy.master.Master-1-hadoop0.out</span><br><span class="line">hadoop2: starting org.apache.spark.deploy.worker.Worker, logging to &#x2F;home&#x2F;guty&#x2F;software&#x2F;spark-2.4.4-bin-hadoop2.7&#x2F;logs&#x2F;spark-root-org.apache.spark.deploy.worker.Worker-1-hadoop2.out</span><br><span class="line">hadoop1: starting org.apache.spark.deploy.worker.Worker, logging to &#x2F;home&#x2F;guty&#x2F;software&#x2F;spark-2.4.4-bin-hadoop2.7&#x2F;logs&#x2F;spark-root-org.apache.spark.deploy.worker.Worker-1-hadoop1.out</span><br><span class="line">hadoop0: starting org.apache.spark.deploy.worker.Worker, logging to &#x2F;home&#x2F;guty&#x2F;software&#x2F;spark-2.4.4-bin-hadoop2.7&#x2F;logs&#x2F;spark-root-org.apache.spark.deploy.worker.Worker-1-hadoop0.out</span><br></pre></td></tr></table></figure><p>然后可以访问Spark Web UI界面，<a href="http://192.168.71.130:8080" target="_blank" rel="noopener">http://192.168.71.130:8080</a>是Spark Master节点web界面，下图可以看到各个workers节点的列表信息：</p><img src="/info-tech-tutorial/2020/01/14/spark-tutorial-01/spark-master.png" class=""><p>单击上图其中某一个worker节点，可以查看该worker节点的任务执行情况，如下图：</p><img src="/info-tech-tutorial/2020/01/14/spark-tutorial-01/spark-worker.png" class=""></li><li><p>停止Spark<br>停止Spark会显示如下信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;sbin&#x2F;stop-all.sh </span><br><span class="line"></span><br><span class="line">hadoop1: stopping org.apache.spark.deploy.worker.Worker</span><br><span class="line">hadoop0: stopping org.apache.spark.deploy.worker.Worker</span><br><span class="line">hadoop2: stopping org.apache.spark.deploy.worker.Worker</span><br><span class="line">stopping org.apache.spark.deploy.master.Master</span><br></pre></td></tr></table></figure></li></ul><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol><li><a href="http://spark.apache.org/docs/latest/spark-standalone.html" target="_blank" rel="noopener">Spark Standalone Mode</a></li><li><a href="http://jianshu.com/p/2103ba93a2dd" target="_blank" rel="noopener">Spark的独立集群模式部署</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-环境准备&quot;&gt;&lt;a href=&quot;#1-环境准备&quot; class=&quot;headerlink&quot; title=&quot;1. 环境准备&quot;&gt;&lt;/a&gt;1. 环境准备&lt;/h2&gt;&lt;p&gt;为了部署Apache Spark Standalone集群模式，本次准备了三台Linux虚拟机来实现集群
+      
+    
+    </summary>
+    
+    
+      <category term="Spark实战" scheme="https://3pigsgu.github.io/info-tech-tutorial/categories/Spark-Action/"/>
+    
+    
+      <category term="框架实战" scheme="https://3pigsgu.github.io/info-tech-tutorial/tags/Architecture-Action/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache Spark实战全集</title>
+    <link href="https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/"/>
+    <id>https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/</id>
+    <published>2020-01-14T03:21:24.000Z</published>
+    <updated>2020-01-14T09:22:42.960Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-Apache-Spark简介"><a href="#1-Apache-Spark简介" class="headerlink" title="1. Apache Spark简介"></a>1. Apache Spark简介</h2><p>Apache Spark是一款轻量级快速统一分析引擎。作为一个开源的大数据处理框架，Spark围绕速度，易用性和复杂分析能力而构建。开发人员在处理大量数据或处理内存有限和时间过长时通常会使用Spark。</p><h3 id="1-1-超快的速度"><a href="#1-1-超快的速度" class="headerlink" title="1.1. 超快的速度"></a>1.1. 超快的速度</h3><p>Apache Spark在批量数据和流量数据处理方面都实现了高性能，并提供了优异的调度器、查询器和物理执行引擎给大家使用。例如下图，Spark比Hadoop运行工作负载的速度提高了100倍。</p><img src="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/spark-logistic-regression.png" class="" title="Logistic regression in Hadoop and Spark"><h3 id="1-2-简单易用"><a href="#1-2-简单易用" class="headerlink" title="1.2. 简单易用"></a>1.2. 简单易用</h3><p>Spark提供了80多个高级操作器，可轻松构建并行应用程序。您可以使用Scala，Python，R和SQL Shell与Spark进行交互。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = spark.read.json(<span class="string">"logs.json"</span>) df.where(<span class="string">"age &gt; 21"</span>)</span><br><span class="line">        .select(<span class="string">"name.first"</span>).show()</span><br></pre></td></tr></table></figure><h3 id="1-3-通用性"><a href="#1-3-通用性" class="headerlink" title="1.3. 通用性"></a>1.3. 通用性</h3><p>Spark可以结合SQL，流和复杂的分析一起使用。Spark为包括SQL和DataFrames，用于机器学习的MLlib，GraphX和Spark Streaming在内的库提供了强大的支持。您可以在同一应用程序中无缝组合这些库。</p><img src="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/spark-stack.png" class=""><h2 id="1-4-随处运行"><a href="#1-4-随处运行" class="headerlink" title="1.4. 随处运行"></a>1.4. 随处运行</h2><p>Spark可在Hadoop，Apache Mesos，Kubernetes，独立或云中运行。它可以访问各种数据源。您可以在EC2，Hadoop YARN，Mesos或Kubernetes上使用独立集群模式运行Spark。访问HDFS，Alluxio，Apache Cassandra，Apache HBase，Apache Hive和数百种其他数据源中的数据。</p><img src="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/spark-runs-everywhere.png" class=""><h2 id="2-Spark实战章节"><a href="#2-Spark实战章节" class="headerlink" title="2. Spark实战章节"></a>2. Spark实战章节</h2><p>第一篇： <a href="/info-tech-tutorial/2020/01/14/spark-tutorial-01/" title="Apache Spark Standalone集群模式部署">Apache Spark Standalone集群模式部署</a></p><h2 id="Reference-List"><a href="#Reference-List" class="headerlink" title="Reference List"></a>Reference List</h2><ol><li><a href="http://spark.apache.org/" target="_blank" rel="noopener">Apache Spark官网</a></li><li><a href="http://spark.apache.org/docs/latest/" target="_blank" rel="noopener">Apache Spark Documentation</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-Apache-Spark简介&quot;&gt;&lt;a href=&quot;#1-Apache-Spark简介&quot; class=&quot;headerlink&quot; title=&quot;1. Apache Spark简介&quot;&gt;&lt;/a&gt;1. Apache Spark简介&lt;/h2&gt;&lt;p&gt;Apache Spark
+      
+    
+    </summary>
+    
+    
+      <category term="Spark实战" scheme="https://3pigsgu.github.io/info-tech-tutorial/categories/Spark-Action/"/>
+    
+    
+      <category term="框架实战" scheme="https://3pigsgu.github.io/info-tech-tutorial/tags/Architecture-Action/"/>
+    
+  </entry>
   
   <entry>
     <title>Prometheus+Grafana监控平台搭建与配置</title>

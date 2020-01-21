@@ -17,23 +17,25 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>分类 | Infomatic Technique Tutorial</title>
-  <meta name="description" content="This is my personal blog to share latest techniques and theories in High-Tech field.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;categories&#x2F;index.html">
+  <title>Apache Spark实战全集 | Infomatic Technique Tutorial</title>
+  <meta name="description" content="1. Apache Spark简介Apache Spark是一款轻量级快速统一分析引擎。作为一个开源的大数据处理框架，Spark围绕速度，易用性和复杂分析能力而构建。开发人员在处理大量数据或处理内存有限和时间过长时通常会使用Spark。 1.1. 超快的速度Apache Spark在批量数据和流量数据处理方面都实现了高性能，并提供了优异的调度器、查询器和物理执行引擎给大家使用。例如下图，Spark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Spark实战全集">
+<meta property="og:url" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;14&#x2F;spark&#x2F;spark-tutorial-00&#x2F;index.html">
 <meta property="og:site_name" content="Infomatic Technique Tutorial">
-<meta property="og:description" content="This is my personal blog to share latest techniques and theories in High-Tech field.">
+<meta property="og:description" content="1. Apache Spark简介Apache Spark是一款轻量级快速统一分析引擎。作为一个开源的大数据处理框架，Spark围绕速度，易用性和复杂分析能力而构建。开发人员在处理大量数据或处理内存有限和时间过长时通常会使用Spark。 1.1. 超快的速度Apache Spark在批量数据和流量数据处理方面都实现了高性能，并提供了优异的调度器、查询器和物理执行引擎给大家使用。例如下图，Spark">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-17T08:47:01.000Z">
-<meta property="article:modified_time" content="2019-12-18T06:04:12.808Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;14&#x2F;spark&#x2F;spark-tutorial-00&#x2F;spark-logistic-regression.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;14&#x2F;spark&#x2F;spark-tutorial-00&#x2F;spark-stack.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;14&#x2F;spark&#x2F;spark-tutorial-00&#x2F;spark-runs-everywhere.png">
+<meta property="article:published_time" content="2020-01-14T03:21:24.000Z">
+<meta property="article:modified_time" content="2020-01-14T09:22:42.960Z">
 <meta property="article:author" content="Jack Gu">
-<meta property="article:tag" content="Development Techniques">
-<meta property="article:tag" content=" Big Data">
-<meta property="article:tag" content=" Machine Learning">
+<meta property="article:tag" content="框架实战">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;3pigsgu.github.io&#x2F;info-tech-tutorial&#x2F;2020&#x2F;01&#x2F;14&#x2F;spark&#x2F;spark-tutorial-00&#x2F;spark-logistic-regression.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://3pigsgu.github.io/info-tech-tutorial/categories/index.html">
+  <link rel="canonical" href="https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Infomatic Technique Tutorial" type="application/atom+xml">
   
@@ -52,7 +54,7 @@
 <meta name="generator" content="Hexo 4.1.1"></head>
 
 
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+<body class="main-center no-sidebar" itemscope itemtype="http://schema.org/WebPage">
   <header class="header" itemscope itemtype="http://schema.org/WPHeader">
   <div class="slimContent">
     <div class="navbar-header">
@@ -325,164 +327,201 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">分类</h1>
-      <p class="text-muted hidden-xs">共 4 个分类</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/info-tech-tutorial/categories">All</a></li>
-          
-          <li><a href="/info-tech-tutorial/categories/Flink-Action/">Flink实战</a></li>
-          
-          <li><a href="/info-tech-tutorial/categories/Other/">其他</a></li>
-          
-          <li><a href="/info-tech-tutorial/categories/Spark-Action/">Spark实战</a></li>
-          
-          <li><a href="/info-tech-tutorial/categories/Tensorflow-Action/">Tensorflow实战</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-spark/spark-tutorial-00" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseFlink实战" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Flink实战
-            </a>
-            <small class="text-muted">(Total 3 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseFlink实战" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFlink实战">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/info-tech-tutorial/2019/12/28/flink/flink-tutorial-00/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-28T05:21:46.000Z" itemprop="datePublished">2019-12-28</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Apache Flink实战全集
-</a>
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Apache Spark实战全集
+    </h1>
+  
 
-
-              
-                
-<a href="/info-tech-tutorial/2019/12/28/flink-tutorial-01/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-27T18:09:52.000Z" itemprop="datePublished">2019-12-28</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Apache Flink快速入门
-</a>
-
-
-              
-                
-<a href="/info-tech-tutorial/2019/12/30/flink-tutorial-02/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-30T07:46:29.000Z" itemprop="datePublished">2019-12-30</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Apache Flink三类API接口
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse其他" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              其他
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapse其他" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading其他">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-01-07T07:19:02.000Z" itemprop="datePublished">2020-01-07</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Prometheus+Grafana监控平台搭建与配置
-</a>
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/" class="article-date">
+	  <time datetime="2020-01-14T03:21:24.000Z" itemprop="datePublished">2020-01-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/info-tech-tutorial/categories/Spark-Action/">Spark实战</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/info-tech-tutorial/tags/Architecture-Action/" rel="tag">框架实战</a>
+  </span>
 
 
-              
-            </div>
-          </div>
-        </div>
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 380(字)</span>
+	
+	
+
       </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseSpark实战" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Spark实战
-            </a>
-            <small class="text-muted">(Total 2 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseSpark实战" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSpark实战">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-01-14T03:21:24.000Z" itemprop="datePublished">2020-01-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Apache Spark实战全集
-</a>
+        <h2 id="1-Apache-Spark简介"><a href="#1-Apache-Spark简介" class="headerlink" title="1. Apache Spark简介"></a>1. Apache Spark简介</h2><p>Apache Spark是一款轻量级快速统一分析引擎。作为一个开源的大数据处理框架，Spark围绕速度，易用性和复杂分析能力而构建。开发人员在处理大量数据或处理内存有限和时间过长时通常会使用Spark。</p>
+<h3 id="1-1-超快的速度"><a href="#1-1-超快的速度" class="headerlink" title="1.1. 超快的速度"></a>1.1. 超快的速度</h3><p>Apache Spark在批量数据和流量数据处理方面都实现了高性能，并提供了优异的调度器、查询器和物理执行引擎给大家使用。例如下图，Spark比Hadoop运行工作负载的速度提高了100倍。</p>
+<img src="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/spark-logistic-regression.png" class="" title="Logistic regression in Hadoop and Spark">
 
+<h3 id="1-2-简单易用"><a href="#1-2-简单易用" class="headerlink" title="1.2. 简单易用"></a>1.2. 简单易用</h3><p>Spark提供了80多个高级操作器，可轻松构建并行应用程序。您可以使用Scala，Python，R和SQL Shell与Spark进行交互。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = spark.read.json(<span class="string">"logs.json"</span>) df.where(<span class="string">"age &gt; 21"</span>)</span><br><span class="line">        .select(<span class="string">"name.first"</span>).show()</span><br></pre></td></tr></table></figure>
 
-              
-                
-<a href="/info-tech-tutorial/2020/01/14/spark-tutorial-01/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-01-14T09:20:19.000Z" itemprop="datePublished">2020-01-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Apache Spark Standalone集群模式部署
-</a>
+<h3 id="1-3-通用性"><a href="#1-3-通用性" class="headerlink" title="1.3. 通用性"></a>1.3. 通用性</h3><p>Spark可以结合SQL，流和复杂的分析一起使用。Spark为包括SQL和DataFrames，用于机器学习的MLlib，GraphX和Spark Streaming在内的库提供了强大的支持。您可以在同一应用程序中无缝组合这些库。</p>
+<img src="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/spark-stack.png" class="">
 
+<h2 id="1-4-随处运行"><a href="#1-4-随处运行" class="headerlink" title="1.4. 随处运行"></a>1.4. 随处运行</h2><p>Spark可在Hadoop，Apache Mesos，Kubernetes，独立或云中运行。它可以访问各种数据源。您可以在EC2，Hadoop YARN，Mesos或Kubernetes上使用独立集群模式运行Spark。访问HDFS，Alluxio，Apache Cassandra，Apache HBase，Apache Hive和数百种其他数据源中的数据。</p>
+<img src="/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/spark-runs-everywhere.png" class="">
 
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseTensorflow实战" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Tensorflow实战
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseTensorflow实战" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTensorflow实战">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/info-tech-tutorial/2019/12/26/tensorflow/tensorflow-tutorial-01/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2019-12-26T03:40:37.000Z" itemprop="datePublished">2019-12-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Tensorflow安装详解与样例Demo演示
-</a>
+<h2 id="2-Spark实战章节"><a href="#2-Spark实战章节" class="headerlink" title="2. Spark实战章节"></a>2. Spark实战章节</h2><p>第一篇： <a href="/info-tech-tutorial/2020/01/14/spark-tutorial-01/" title="Apache Spark Standalone集群模式部署">Apache Spark Standalone集群模式部署</a></p>
+<h2 id="Reference-List"><a href="#Reference-List" class="headerlink" title="Reference List"></a>Reference List</h2><ol>
+<li><a href="http://spark.apache.org/" target="_blank" rel="noopener">Apache Spark官网</a></li>
+<li><a href="http://spark.apache.org/docs/latest/" target="_blank" rel="noopener">Apache Spark Documentation</a></li>
+</ol>
 
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
       
     </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/" title="Apache Spark实战全集" target="_blank" rel="external">https://3pigsgu.github.io/info-tech-tutorial/2020/01/14/spark/spark-tutorial-00/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/3pigsGu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/info-tech-tutorial/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/3pigsGu" target="_blank"><span class="text-dark">Jack Gu</span><small class="ml-1x">Architect &amp; AI Researcher</small></a></h3>
+        <div>伦敦大学国王学院（KCL）人工智能 Web Intelligence 专业硕士毕业。九年Java项目开发管理和系统架构经验，两年人工智能专业理论研究。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
   </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/info-tech-tutorial/2020/01/14/spark-tutorial-01/" title="Apache Spark Standalone集群模式部署"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/info-tech-tutorial/2020/01/07/other/prometheus_grafana_monitoring/" title="Prometheus+Grafana监控平台搭建与配置"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/info-tech-tutorial/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/info-tech-tutorial/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
+
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 	
 	
@@ -547,6 +586,10 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 })(jQuery);
 </script>
 
+
+
+
+   
 
 
 
